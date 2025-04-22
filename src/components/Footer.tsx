@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
 const Footer: React.FC = () => {
@@ -18,18 +18,21 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p>
-              &copy; {new Date().getFullYear()} Dereck Bélanger - All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Dereck Bélanger - Tous Droits
+              Réservés.
             </p>
           </div>
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-purple-600 transition-colors">
+            <a
+              href="https://github.com/DereckBelanger152"
+              className="hover:text-purple-600 transition-colors"
+            >
               <Github size={20} />
             </a>
-            <a href="#" className="hover:text-purple-600 transition-colors">
-              <Twitter size={20} />
-            </a>
-            <a href="#" className="hover:text-purple-600 transition-colors">
+            <a
+              href="https://www.linkedin.com/in/dereck-bélanger-437259338/"
+              className="hover:text-purple-600 transition-colors"
+            >
               <Linkedin size={20} />
             </a>
           </div>

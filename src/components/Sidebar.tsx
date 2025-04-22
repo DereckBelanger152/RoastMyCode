@@ -1,22 +1,28 @@
-import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
-import { useRoast } from '../contexts/RoastContext';
-import { History, X } from 'lucide-react';
+import React from "react";
+import { useTheme } from "../contexts/ThemeContext";
+import { useRoast } from "../contexts/RoastContext";
+import { History, X } from "lucide-react";
 
 interface SidebarProps {
   onClose: () => void;
 }
 
 const profileLabels = {
-  meanTeacher: 'Mean Teacher',
-  angrySenior: 'Angry Senior Dev',
-  sarcasticMentor: 'Sarcastic Mentor',
-  disappointedArchitect: 'Disappointed Architect'
+  meanTeacher: "Mean Teacher",
+  angrySenior: "Angry Senior Dev",
+  sarcasticMentor: "Sarcastic Mentor",
+  disappointedArchitect: "Disappointed Architect",
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   const { theme } = useTheme();
-  const { roastHistory, setCurrentCode, setLanguage, setIntensity, setProfile } = useRoast();
+  const {
+    roastHistory,
+    setCurrentCode,
+    setLanguage,
+    setIntensity,
+    setProfile,
+  } = useRoast();
 
   const handleReuseCode = (index: number) => {
     const roast = roastHistory[index];
@@ -24,22 +30,29 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
     setLanguage(roast.language);
     setIntensity(roast.intensity);
     setProfile(roast.profile);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     onClose();
   };
 
-  const intensityColors = {
-    mild: 'text-blue-500',
-    medium: 'text-yellow-500',
-    spicy: 'text-orange-500',
-    brutal: 'text-red-500'
+  const intensityColors: Record<
+    "mild" | "medium" | "spicy" | "brutal",
+    string
+  > = {
+    mild: "text-blue-500",
+    medium: "text-yellow-500",
+    spicy: "text-orange-500",
+    brutal: "text-red-500",
   };
 
   return (
-    <div className={`h-full flex flex-col shadow-xl transition-colors duration-300
-      ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-      <div className={`p-4 flex items-center justify-between border-b
-        ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+    <div
+      className={`h-full flex flex-col shadow-xl transition-colors duration-300
+      ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+    >
+      <div
+        className={`p-4 flex items-center justify-between border-b
+        ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}
+      >
         <div className="flex items-center">
           <History className="w-5 h-5 mr-2 text-purple-500" />
           <h2 className="text-lg font-bold">Roast History</h2>
@@ -47,9 +60,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
         <button
           onClick={onClose}
           className={`p-1 rounded-lg transition-colors
-            ${theme === 'dark' 
-              ? 'hover:bg-gray-700' 
-              : 'hover:bg-gray-100'}`}
+            ${theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-100"}`}
         >
           <X size={20} />
         </button>
@@ -67,25 +78,40 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                 key={roast.id}
                 className={`p-4 rounded-lg cursor-pointer transition-all duration-300
                   hover:transform hover:scale-[1.02]
-                  ${theme === 'dark' ? 'bg-gray-900 hover:bg-gray-700' : 'bg-gray-50 hover:bg-gray-100'}`}
+                  ${
+                    theme === "dark"
+                      ? "bg-gray-900 hover:bg-gray-700"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  }`}
                 onClick={() => handleReuseCode(index)}
               >
                 <div className="flex flex-col space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className={`font-medium ${intensityColors[roast.intensity]}`}>
-                      {roast.intensity.charAt(0).toUpperCase() + roast.intensity.slice(1)}
+                    <span
+                      className={`font-medium ${
+                        intensityColors[
+                          roast.intensity as keyof typeof intensityColors
+                        ]
+                      }`}
+                    >
+                      {roast.intensity.charAt(0).toUpperCase() +
+                        roast.intensity.slice(1)}
                     </span>
                     <span className="text-sm text-purple-500">
                       {profileLabels[roast.profile]}
                     </span>
                   </div>
-                  
+
                   <div className="line-clamp-2 text-sm font-mono">
                     {roast.code.trim().slice(0, 100)}
-                    {roast.code.length > 100 && '...'}
+                    {roast.code.length > 100 && "..."}
                   </div>
-                  
-                  <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+
+                  <div
+                    className={`text-sm ${
+                      theme === "dark" ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
                     {new Date(roast.timestamp).toLocaleString()}
                   </div>
                 </div>
