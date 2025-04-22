@@ -38,37 +38,45 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
     "mild" | "medium" | "spicy" | "brutal",
     string
   > = {
-    mild: "text-blue-500",
-    medium: "text-yellow-500",
-    spicy: "text-orange-500",
-    brutal: "text-red-500",
+    mild: "text-[#a3f7b5]", // Brighter green for mild intensity
+    medium: "text-[#ff914d]", // Brighter orange for medium intensity
+    spicy: "text-[#e85c3a]", // Slightly brighter chestnut for spicy
+    brutal: "text-[#ff4d4d]", // Bright red for brutal
   };
 
   return (
     <div
       className={`h-full flex flex-col shadow-xl transition-colors duration-300
-      ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+      ${theme === "dark" ? "bg-jet" : "bg-cambridge"}`}
     >
       <div
         className={`p-4 flex items-center justify-between border-b
-        ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}
+        ${theme === "dark" ? "border-hunter" : "border-chestnut"}`}
       >
         <div className="flex items-center">
-          <History className="w-5 h-5 mr-2 text-purple-500" />
-          <h2 className="text-lg font-bold">Roast History</h2>
+          <History className="w-5 h-5 mr-2 text-[#ff914d]" />{" "}
+          {/* Brighter orange */}
+          <h2 className="text-lg font-bold text-hunter">Roast History</h2>
         </div>
         <button
           onClick={onClose}
           className={`p-1 rounded-lg transition-colors
-            ${theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-100"}`}
+            ${theme === "dark" ? "hover:bg-hunter" : "hover:bg-flame"}`}
         >
-          <X size={20} />
+          <X
+            size={20}
+            className={`${theme === "dark" ? "text-cambridge" : "text-jet"}`}
+          />
         </button>
       </div>
 
       <div className="flex-1 overflow-y-auto">
         {roastHistory.length === 0 ? (
-          <div className="p-4 text-center text-gray-500">
+          <div
+            className={`p-4 text-center ${
+              theme === "dark" ? "text-cambridge" : "text-jet"
+            }`}
+          >
             No roasts yet. Start by submitting some code!
           </div>
         ) : (
@@ -80,8 +88,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                   hover:transform hover:scale-[1.02]
                   ${
                     theme === "dark"
-                      ? "bg-gray-900 hover:bg-gray-700"
-                      : "bg-gray-50 hover:bg-gray-100"
+                      ? "bg-[#356b48] hover:bg-[#3e5641]"
+                      : "bg-jet hover:bg-cambridge"
                   }`}
                 onClick={() => handleReuseCode(index)}
               >
@@ -97,22 +105,31 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                       {roast.intensity.charAt(0).toUpperCase() +
                         roast.intensity.slice(1)}
                     </span>
-                    <span className="text-sm text-purple-500">
+                    <span className="text-sm text-[#ff914d] font-medium">
                       {profileLabels[roast.profile]}
                     </span>
                   </div>
 
-                  <div className="line-clamp-2 text-sm font-mono">
+                  <div className="line-clamp-2 text-sm font-mono text-hunter">
                     {roast.code.trim().slice(0, 100)}
                     {roast.code.length > 100 && "..."}
                   </div>
 
                   <div
                     className={`text-sm ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      theme === "dark" ? "text-cambridge" : "text-jet"
                     }`}
                   >
                     {new Date(roast.timestamp).toLocaleString()}
+                  </div>
+
+                  <div
+                    className={`text-sm italic ${
+                      theme === "dark" ? "text-cambridge" : "text-jet"
+                    }`}
+                  >
+                    "{roast.response.slice(0, 60)}
+                    {roast.response.length > 60 && "..."}"
                   </div>
                 </div>
               </div>

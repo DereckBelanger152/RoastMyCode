@@ -87,7 +87,7 @@ export const RoastProvider: React.FC<{ children: React.ReactNode }> = ({
         intensity,
         profile,
         response:
-          "😵 Oups! Impossible de générer le roast. Réessaie plus tard.",
+          "Oups! Impossible de générer le roast. Je pense que tu as planté mon app avec ton code.....",
         timestamp: Date.now(),
       });
     } finally {

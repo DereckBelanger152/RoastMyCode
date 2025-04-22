@@ -27,12 +27,13 @@ const LanguageSelector: React.FC = () => {
   return (
     <div className="mb-6">
       <div className="flex items-center space-x-2 mb-2">
-        <Globe className="w-5 h-5 text-purple-500" />
-        <span className="font-medium text-lg">Choose Language:</span>
+        <Globe className="w-5 h-5 text-flame" />
+        <span className="font-medium text-lg text-hunter">
+          Choisis le language de programmation que tu as saboté:
+        </span>
       </div>
 
       <div className="relative">
-        {/* Custom dropdown button */}
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -40,11 +41,11 @@ const LanguageSelector: React.FC = () => {
             w-full p-3 px-4 rounded-lg
             flex items-center justify-between
             transition-all duration-300
-            focus:outline-none focus:ring-2 focus:ring-purple-500
+            focus:outline-none focus:ring-2 focus:ring-flame
             ${
               isDark
-                ? "bg-gray-800 text-white border border-gray-700 hover:border-purple-500"
-                : "bg-white text-gray-800 border border-gray-300 hover:border-purple-400"
+                ? "bg-jet text-cambridge border border-hunter hover:border-flame"
+                : "bg-cambridge text-jet border border-chestnut hover:border-flame"
             }
           `}
         >
@@ -52,11 +53,10 @@ const LanguageSelector: React.FC = () => {
           <ChevronDown
             className={`w-5 h-5 transition-transform duration-300 ${
               isOpen ? "transform rotate-180" : ""
-            } ${isDark ? "text-gray-400" : "text-gray-600"}`}
+            } ${isDark ? "text-cambridge" : "text-jet"}`}
           />
         </button>
 
-        {/* Dropdown menu */}
         {isOpen && (
           <div
             className={`
@@ -64,8 +64,8 @@ const LanguageSelector: React.FC = () => {
               max-h-60 overflow-auto
               ${
                 isDark
-                  ? "bg-gray-800 border border-gray-700"
-                  : "bg-white border border-gray-200"
+                  ? "bg-jet border border-hunter"
+                  : "bg-cambridge border border-chestnut"
               }
             `}
           >
@@ -81,10 +81,10 @@ const LanguageSelector: React.FC = () => {
                   transition-colors duration-150
                   ${
                     language === lang.value
-                      ? "bg-purple-500 bg-opacity-20 text-purple-500"
+                      ? "bg-flame bg-opacity-20 text-flame"
                       : ""
                   }
-                  ${isDark ? "hover:bg-gray-700" : "hover:bg-gray-100"}
+                  ${isDark ? "hover:bg-hunter" : "hover:bg-chestnut"}
                 `}
               >
                 {lang.label}
@@ -93,14 +93,6 @@ const LanguageSelector: React.FC = () => {
           </div>
         )}
       </div>
-
-      <p
-        className={`text-sm italic mt-1 ${
-          isDark ? "text-gray-400" : "text-gray-600"
-        }`}
-      >
-        Select the programming language of your code for a tailored roast.
-      </p>
     </div>
   );
 };

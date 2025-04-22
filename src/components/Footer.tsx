@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
       className={`py-6 transition-colors duration-300 
       ${
         theme === "dark"
-          ? "bg-gray-900 text-gray-400 border-t border-gray-800"
-          : "bg-white text-gray-600 border-t border-gray-200"
+          ? "bg-jet text-cambridge border-t border-hunter"
+          : "bg-cambridge text-jet border-t border-chestnut"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -25,13 +25,13 @@ const Footer: React.FC = () => {
           <div className="flex space-x-4">
             <a
               href="https://github.com/DereckBelanger152"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-flame transition-colors"
             >
               <Github size={20} />
             </a>
             <a
               href="https://www.linkedin.com/in/dereck-bélanger-437259338/"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-flame transition-colors"
             >
               <Linkedin size={20} />
             </a>

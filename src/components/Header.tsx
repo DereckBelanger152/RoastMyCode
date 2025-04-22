@@ -10,16 +10,16 @@ const Header: React.FC = () => {
       className={`sticky top-0 z-50 transition-colors duration-300 
       ${
         theme === "dark"
-          ? "bg-gray-900 text-white border-b border-gray-800"
-          : "bg-white text-gray-900 border-b border-gray-200"
+          ? "bg-jet text-cambridge border-b border-hunter"
+          : "bg-cambridge text-jet border-b border-chestnut"
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <h1 className="text-2xl font-bold">
-            <span className="text-purple-600">Roast</span>
-            <span className="text-gray-500">My</span>
-            <span className="text-purple-600">Code</span>
+            <span className="text-flame">Roast</span>
+            <span className="text-hunter">My</span>
+            <span className="text-flame">Code</span>
           </h1>
         </div>
 
@@ -27,8 +27,8 @@ const Header: React.FC = () => {
           onClick={toggleTheme}
           className={`p-2 rounded-full transition-colors ${
             theme === "dark"
-              ? "bg-gray-800 hover:bg-gray-700"
-              : "bg-gray-100 hover:bg-gray-200"
+              ? "bg-hunter hover:bg-flame"
+              : "bg-chestnut hover:bg-flame"
           }`}
           aria-label={
             theme === "dark" ? "Switch to light mode" : "Switch to dark mode"

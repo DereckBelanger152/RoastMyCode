@@ -16,9 +16,9 @@ interface RoastResultProps {
 }
 
 const intensityColors = {
-  mild: "text-blue-500",
-  medium: "text-yellow-500",
-  spicy: "text-orange-500",
+  mild: "text-cambridge",
+  medium: "text-flame",
+  spicy: "text-chestnut",
   brutal: "text-red-500",
 };
 
@@ -52,7 +52,6 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
         .catch((error) => console.log("Error sharing:", error));
     } else {
       console.log("Web Share API not supported");
-      // Fallback to copy
       handleCopy();
     }
   };
@@ -60,17 +59,18 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
   return (
     <div
       className={`rounded-xl shadow-lg overflow-hidden transition-colors duration-300
-      ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+      ${theme === "dark" ? "bg-jet" : "bg-cambridge"}`}
     >
       <div className="p-6">
+        {/* Header Section */}
         <div className="flex justify-between items-center mb-6">
           <button
             onClick={onBack}
             className={`flex items-center space-x-1 p-2 rounded-lg transition-colors
               ${
                 theme === "dark"
-                  ? "hover:bg-gray-700 text-gray-400 hover:text-white"
-                  : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
+                  ? "hover:bg-hunter text-cambridge hover:text-white"
+                  : "hover:bg-chestnut text-jet hover:text-hunter"
               }`}
           >
             <ArrowLeft size={18} />
@@ -83,12 +83,12 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
               className={`p-2 rounded-lg transition-colors flex items-center space-x-1
                 ${
                   theme === "dark"
-                    ? "hover:bg-gray-700 text-gray-400 hover:text-white"
-                    : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
+                    ? "hover:bg-hunter text-cambridge hover:text-white"
+                    : "hover:bg-chestnut text-jet hover:text-hunter"
                 }`}
             >
               {copied ? (
-                <Check size={18} className="text-green-500" />
+                <Check size={18} className="text-cambridge" />
               ) : (
                 <Copy size={18} />
               )}
@@ -97,7 +97,7 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
 
             <button
               onClick={handleShare}
-              className="p-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex items-center space-x-1"
+              className="p-2 bg-flame hover:bg-chestnut text-white rounded-lg transition-colors flex items-center space-x-1"
             >
               <Share2 size={18} />
               <span>Share</span>
@@ -105,6 +105,7 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
           </div>
         </div>
 
+        {/* Metadata Section */}
         <div className="mb-6">
           <div className="flex items-center mb-4">
             <span
@@ -119,41 +120,43 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
               Roast
             </span>
             <span className="mx-2 text-gray-500">•</span>
-            <span className="text-purple-500 font-medium">
+            <span className="text-flame font-medium">
               {profileLabels[result.profile]}
             </span>
             <span className="mx-2 text-gray-500">•</span>
-            <span
-              className={theme === "dark" ? "text-gray-400" : "text-gray-600"}
-            >
+            <span className={theme === "dark" ? "text-cambridge" : "text-jet"}>
               {new Date(result.timestamp).toLocaleString()}
             </span>
           </div>
 
+          {/* Code Section */}
           <div
             className={`p-6 rounded-lg transition-colors duration-300 mb-6
-            ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"}`}
+            ${theme === "dark" ? "bg-[#2e2f2e]" : "bg-[#e6f2ed]"}`}
           >
-            <pre className="whitespace-pre-wrap font-mono text-sm">
+            <pre className="whitespace-pre-wrap font-mono text-sm text-hunter">
               <code>{result.code}</code>
             </pre>
           </div>
 
+          {/* Response Section */}
           <div
             className={`p-6 rounded-lg transition-all duration-300 
             border-l-4 animate-fade-in
-            ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"}
+            ${theme === "dark" ? "bg-[#1f1f1f]" : "bg-[#f0f9f5]"}
             ${
               result.intensity === "mild"
-                ? "border-blue-500"
+                ? "border-cambridge"
                 : result.intensity === "medium"
-                ? "border-yellow-500"
+                ? "border-flame"
                 : result.intensity === "savage"
-                ? "border-orange-500"
+                ? "border-chestnut"
                 : "border-red-500"
             }`}
           >
-            <p className="whitespace-pre-line text-lg">{result.response}</p>
+            <p className="whitespace-pre-line text-lg text-hunter">
+              {result.response}
+            </p>
           </div>
         </div>
       </div>

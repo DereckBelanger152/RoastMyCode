@@ -62,7 +62,6 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
       button?.classList.add("animate-wiggle");
       setTimeout(() => button?.classList.remove("animate-wiggle"), 500);
     } else {
-      // Animation for dropdown mode
       const animateElement = document.querySelector(`#profile-icon-${value}`);
       animateElement?.classList.add("animate-wiggle");
       setTimeout(() => animateElement?.classList.remove("animate-wiggle"), 500);
@@ -72,12 +71,11 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
   if (mode === "dropdown") {
     return (
       <div className="mb-6">
-        <label className="block font-medium text-lg mb-2">
-          Choose Your Roaster:
+        <label className="block font-medium text-lg mb-2 text-hunter">
+          Choisis un profil:
         </label>
 
         <div className="relative">
-          {/* Custom dropdown button */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
@@ -85,18 +83,18 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
               w-full p-3 px-4 rounded-lg
               flex items-center justify-between
               transition-all duration-300
-              focus:outline-none focus:ring-2 focus:ring-purple-500
+              focus:outline-none focus:ring-2 focus:ring-flame
               ${
                 isDark
-                  ? "bg-gray-800 text-white border border-gray-700 hover:border-purple-500"
-                  : "bg-white text-gray-800 border border-gray-300 hover:border-purple-400"
+                  ? "bg-jet text-cambridge border border-hunter hover:border-flame"
+                  : "bg-cambridge text-jet border border-chestnut hover:border-flame"
               }
             `}
           >
             <div className="flex items-center space-x-3">
               <span
                 id={`profile-icon-${selectedProfile?.value}`}
-                className="text-purple-500"
+                className="text-flame"
               >
                 {selectedProfile?.icon}
               </span>
@@ -105,19 +103,18 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
             <ChevronDown
               className={`w-5 h-5 transition-transform duration-300 ${
                 isOpen ? "transform rotate-180" : ""
-              } ${isDark ? "text-gray-400" : "text-gray-600"}`}
+              } ${isDark ? "text-cambridge" : "text-jet"}`}
             />
           </button>
 
-          {/* Dropdown menu */}
           {isOpen && (
             <div
               className={`
                 absolute z-10 w-full mt-1 rounded-lg shadow-lg
                 ${
                   isDark
-                    ? "bg-gray-800 border border-gray-700"
-                    : "bg-white border border-gray-200"
+                    ? "bg-jet border border-hunter"
+                    : "bg-cambridge border border-chestnut"
                 }
               `}
             >
@@ -130,19 +127,19 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
                     transition-colors duration-150
                     ${
                       profile === option.value
-                        ? "bg-purple-500 bg-opacity-20"
+                        ? "bg-flame bg-opacity-20 text-flame"
                         : ""
                     }
-                    ${isDark ? "hover:bg-gray-700" : "hover:bg-gray-100"}
+                    ${isDark ? "hover:bg-hunter" : "hover:bg-chestnut"}
                   `}
                 >
                   <div className="flex items-center mb-1">
-                    <span className="text-purple-500 mr-3">{option.icon}</span>
+                    <span className="text-flame mr-3">{option.icon}</span>
                     <span className="font-medium">{option.label}</span>
                   </div>
                   <div
                     className={`text-sm ${
-                      isDark ? "text-gray-400" : "text-gray-600"
+                      isDark ? "text-cambridge" : "text-jet"
                     }`}
                   >
                     {option.description}
@@ -158,7 +155,9 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
 
   return (
     <div className="space-y-2">
-      <label className="block font-medium">Choose Your Roaster:</label>
+      <label className="block font-medium text-hunter">
+        Choose Your Roaster:
+      </label>
       <div className="grid grid-cols-2 gap-3">
         {profileOptions.map((option) => (
           <button
@@ -168,38 +167,36 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
             className={`group relative overflow-hidden rounded-xl transition-all duration-300 hover-scale
               ${
                 profile === option.value
-                  ? `ring-2 ring-offset-2 ring-purple-500 transform scale-105`
+                  ? `ring-2 ring-offset-2 ring-flame transform scale-105`
                   : ""
               }
               ${
-                theme === "dark"
+                isDark
                   ? profile === option.value
-                    ? "bg-gray-700"
-                    : "bg-gray-800 hover:bg-gray-700"
+                    ? "bg-jet"
+                    : "bg-hunter hover:bg-jet"
                   : profile === option.value
-                  ? "bg-gray-200"
-                  : "bg-gray-100 hover:bg-gray-200"
+                  ? "bg-cambridge"
+                  : "bg-flame hover:bg-cambridge"
               }`}
           >
             <div className="p-4 relative z-10">
               <div className="flex items-center mb-2">
                 <span
-                  className={`text-purple-500 mr-3 transition-transform duration-300 group-hover:rotate-12`}
+                  className={`text-flame mr-3 transition-transform duration-300 group-hover:rotate-12`}
                 >
                   {option.icon}
                 </span>
                 <div className="font-bold">{option.label}</div>
               </div>
               <div
-                className={`text-sm ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
+                className={`text-sm ${isDark ? "text-cambridge" : "text-jet"}`}
               >
                 {option.description}
               </div>
             </div>
             {profile === option.value && (
-              <div className="absolute inset-0 bg-purple-500 opacity-5"></div>
+              <div className="absolute inset-0 bg-flame opacity-5"></div>
             )}
           </button>
         ))}

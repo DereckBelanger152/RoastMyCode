@@ -8,20 +8,17 @@ const CodeInput: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <label htmlFor="code-input" className="block font-medium">
-        Collez votre "code" ici:
-      </label>
       <textarea
         id="code-input"
         value={currentCode}
         onChange={(e) => setCurrentCode(e.target.value)}
-        placeholder="// Paste your code here to get it roasted..."
+        placeholder="// Collez votre 'code' ici"
         className={`w-full h-60 p-4 rounded-lg font-mono text-sm resize-none transition-colors duration-300
-          focus:outline-none focus:ring-2 focus:ring-purple-500
+          focus:outline-none focus:ring-2 focus:ring-flame
           ${
             theme === "dark"
-              ? "bg-gray-900 text-gray-200 border border-gray-700"
-              : "bg-gray-50 text-gray-800 border border-gray-300"
+              ? "bg-jet text-cambridge border border-hunter"
+              : "bg-cambridge text-jet border border-chestnut"
           }`}
       />
     </div>

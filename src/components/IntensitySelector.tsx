@@ -11,23 +11,22 @@ const intensityOptions: {
 }[] = [
   {
     value: "mild",
-    label: "Mild",
+    label: "Constructif",
     icon: <Thermometer className="w-5 h-5" />,
-    color: "text-blue-500",
+    color: "text-cambridge",
   },
   {
     value: "medium",
-    label: "Medium",
+    label: "Taquin",
     icon: <Flame className="w-5 h-5" />,
-    color: "text-yellow-500",
+    color: "text-flame",
   },
   {
     value: "savage",
-    label: "Savage",
+    label: "Sans pitié",
     icon: <Zap className="w-5 h-5" />,
-    color: "text-orange-500",
+    color: "text-chestnut",
   },
-  //Add intensities if you want!
 ];
 
 const IntensitySelector: React.FC = () => {
@@ -43,8 +42,8 @@ const IntensitySelector: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <label className="block font-medium">Roast intensity:</label>
-      <div className="grid grid-cols-4 gap-2">
+      <label className="block font-medium text-hunter">Intensité:</label>
+      <div className="grid grid-cols-3 gap-4">
         {intensityOptions.map((option) => (
           <button
             key={option.value}
@@ -54,19 +53,17 @@ const IntensitySelector: React.FC = () => {
               hover-scale relative overflow-hidden
               ${
                 intensity === option.value
-                  ? `ring-2 ring-offset-2 ring-${
-                      option.color.split("-")[1]
-                    }-500`
+                  ? `ring-2 ring-offset-2 ring-${option.color.split("-")[1]}`
                   : ""
               }
               ${
                 theme === "dark"
                   ? intensity === option.value
-                    ? "bg-gray-700"
-                    : "bg-gray-800 hover:bg-gray-700"
+                    ? "bg-jet"
+                    : "bg-hunter hover:bg-jet"
                   : intensity === option.value
-                  ? "bg-gray-200"
-                  : "bg-gray-100 hover:bg-gray-200"
+                  ? "bg-cambridge"
+                  : "bg-flame hover:bg-cambridge"
               }`}
           >
             <span
