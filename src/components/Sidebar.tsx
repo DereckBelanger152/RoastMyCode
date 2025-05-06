@@ -38,8 +38,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
     "mild" | "medium" | "spicy" | "brutal",
     string
   > = {
-    mild: "text-[#a3f7b5]", // Brighter green for mild intensity
-    medium: "text-[#ff914d]", // Brighter orange for medium intensity
+    mild: "text-gold", // Gold for mild intensity
+    medium: "text-navy", // Navy for medium intensity
     spicy: "text-[#e85c3a]", // Slightly brighter chestnut for spicy
     brutal: "text-[#ff4d4d]", // Bright red for brutal
   };
@@ -47,25 +47,24 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   return (
     <div
       className={`h-full flex flex-col shadow-xl transition-colors duration-300
-      ${theme === "dark" ? "bg-jet" : "bg-cambridge"}`}
+      ${theme === "dark" ? "bg-navy" : "bg-gold-light"}`}
     >
       <div
         className={`p-4 flex items-center justify-between border-b
-        ${theme === "dark" ? "border-hunter" : "border-chestnut"}`}
+        ${theme === "dark" ? "border-gold" : "border-navy"}`}
       >
         <div className="flex items-center">
-          <History className="w-5 h-5 mr-2 text-[#ff914d]" />{" "}
-          {/* Brighter orange */}
-          <h2 className="text-lg font-bold text-hunter">Roast History</h2>
+          <History className="w-5 h-5 mr-2 text-gold" />
+          <h2 className="text-lg font-bold text-gold">Roast History</h2>
         </div>
         <button
           onClick={onClose}
           className={`p-1 rounded-lg transition-colors
-            ${theme === "dark" ? "hover:bg-hunter" : "hover:bg-flame"}`}
+            ${theme === "dark" ? "hover:bg-gold" : "hover:bg-navy"}`}
         >
           <X
             size={20}
-            className={`${theme === "dark" ? "text-cambridge" : "text-jet"}`}
+            className={`${theme === "dark" ? "text-gold" : "text-navy"}`}
           />
         </button>
       </div>
@@ -74,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
         {roastHistory.length === 0 ? (
           <div
             className={`p-4 text-center ${
-              theme === "dark" ? "text-cambridge" : "text-jet"
+              theme === "dark" ? "text-gold" : "text-navy"
             }`}
           >
             No roasts yet. Start by submitting some code!
@@ -88,8 +87,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                   hover:transform hover:scale-[1.02]
                   ${
                     theme === "dark"
-                      ? "bg-[#356b48] hover:bg-[#3e5641]"
-                      : "bg-jet hover:bg-cambridge"
+                      ? "bg-gold hover:bg-navy"
+                      : "bg-navy hover:bg-gold-light"
                   }`}
                 onClick={() => handleReuseCode(index)}
               >
@@ -105,19 +104,19 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                       {roast.intensity.charAt(0).toUpperCase() +
                         roast.intensity.slice(1)}
                     </span>
-                    <span className="text-sm text-[#ff914d] font-medium">
+                    <span className="text-sm text-gold font-medium">
                       {profileLabels[roast.profile]}
                     </span>
                   </div>
 
-                  <div className="line-clamp-2 text-sm font-mono text-hunter">
+                  <div className="line-clamp-2 text-sm font-mono text-gold">
                     {roast.code.trim().slice(0, 100)}
                     {roast.code.length > 100 && "..."}
                   </div>
 
                   <div
                     className={`text-sm ${
-                      theme === "dark" ? "text-cambridge" : "text-jet"
+                      theme === "dark" ? "text-gold" : "text-navy"
                     }`}
                   >
                     {new Date(roast.timestamp).toLocaleString()}
@@ -125,7 +124,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
 
                   <div
                     className={`text-sm italic ${
-                      theme === "dark" ? "text-cambridge" : "text-jet"
+                      theme === "dark" ? "text-gold" : "text-navy"
                     }`}
                   >
                     "{roast.response.slice(0, 60)}

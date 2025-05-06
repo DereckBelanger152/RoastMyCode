@@ -14,11 +14,11 @@ const CodeInput: React.FC = () => {
         onChange={(e) => setCurrentCode(e.target.value)}
         placeholder="// Collez votre 'code' ici"
         className={`w-full h-60 p-4 rounded-lg font-mono text-sm resize-none transition-colors duration-300
-          focus:outline-none focus:ring-2 focus:ring-flame
+          focus:outline-none focus:ring-2 focus:ring-gold
           ${
             theme === "dark"
-              ? "bg-jet text-cambridge border border-hunter"
-              : "bg-cambridge text-jet border border-chestnut"
+              ? "bg-navy text-gold border border-gold"
+              : "bg-gold-light text-navy border border-navy"
           }`}
       />
     </div>

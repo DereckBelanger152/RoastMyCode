@@ -13,19 +13,19 @@ const intensityOptions: {
     value: "mild",
     label: "Constructif",
     icon: <Thermometer className="w-5 h-5" />,
-    color: "text-cambridge",
+    color: "text-gold",
   },
   {
     value: "medium",
     label: "Taquin",
     icon: <Flame className="w-5 h-5" />,
-    color: "text-flame",
+    color: "text-navy",
   },
   {
     value: "savage",
     label: "Sans pitié",
     icon: <Zap className="w-5 h-5" />,
-    color: "text-chestnut",
+    color: "text-[#e85c3a]",
   },
 ];
 
@@ -42,7 +42,7 @@ const IntensitySelector: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <label className="block font-medium text-hunter">Intensité:</label>
+      <label className="block font-medium text-navy">Intensité:</label>
       <div className="grid grid-cols-3 gap-4">
         {intensityOptions.map((option) => (
           <button
@@ -50,7 +50,6 @@ const IntensitySelector: React.FC = () => {
             data-intensity={option.value}
             onClick={() => handleIntensitySelect(option.value)}
             className={`group flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-300
-              hover-scale relative overflow-hidden
               ${
                 intensity === option.value
                   ? `ring-2 ring-offset-2 ring-${option.color.split("-")[1]}`
@@ -59,11 +58,11 @@ const IntensitySelector: React.FC = () => {
               ${
                 theme === "dark"
                   ? intensity === option.value
-                    ? "bg-jet"
-                    : "bg-hunter hover:bg-jet"
+                    ? "bg-navy"
+                    : "bg-gold hover:bg-navy"
                   : intensity === option.value
-                  ? "bg-cambridge"
-                  : "bg-flame hover:bg-cambridge"
+                  ? "bg-gold-light"
+                  : "bg-navy hover:bg-gold-light"
               }`}
           >
             <span
@@ -72,14 +71,6 @@ const IntensitySelector: React.FC = () => {
               {option.icon}
             </span>
             <span className="mt-1 text-sm font-medium">{option.label}</span>
-            {intensity === option.value && (
-              <div
-                className={`absolute inset-0 ${option.color.replace(
-                  "text",
-                  "bg"
-                )} opacity-5`}
-              ></div>
-            )}
           </button>
         ))}
       </div>

@@ -23,7 +23,6 @@ const RoastHistory: React.FC = () => {
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
-  // Show only the last 3 in collapsed mode
   const displayedHistory = isExpanded ? roastHistory : roastHistory.slice(0, 3);
 
   const handleReuseCode = (index: number) => {
@@ -32,26 +31,25 @@ const RoastHistory: React.FC = () => {
     setLanguage(roast.language);
     setIntensity(roast.intensity);
     setProfile(roast.profile);
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const intensityColors = {
-    mild: "text-cambridge",
-    medium: "text-flame",
-    spicy: "text-chestnut",
-    brutal: "text-red-500",
+    mild: "text-gold",
+    medium: "text-navy",
+    spicy: "text-[#e85c3a]",
+    brutal: "text-[#ff4d4d]",
   };
 
   return (
     <section
       className={`rounded-xl shadow-lg overflow-hidden transition-colors duration-300
-      ${theme === "dark" ? "bg-jet" : "bg-cambridge"}`}
+      ${theme === "dark" ? "bg-navy" : "bg-gold-light"}`}
     >
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold flex items-center text-hunter">
-            <Clock className="mr-2 text-flame" size={20} />
+          <h3 className="text-xl font-bold flex items-center text-gold">
+            <Clock className="mr-2 text-gold" size={20} />
             History
           </h3>
           {roastHistory.length > 3 && (
@@ -60,8 +58,8 @@ const RoastHistory: React.FC = () => {
               className={`flex items-center space-x-1 p-2 rounded-lg transition-colors
                 ${
                   theme === "dark"
-                    ? "hover:bg-hunter text-cambridge hover:text-flame"
-                    : "hover:bg-chestnut text-jet hover:text-flame"
+                    ? "hover:bg-gold text-gold hover:text-navy"
+                    : "hover:bg-navy text-navy hover:text-gold"
                 }`}
             >
               <span>{isExpanded ? "Show Less" : "Show All"}</span>
@@ -75,7 +73,11 @@ const RoastHistory: React.FC = () => {
             <div
               key={roast.id}
               className={`p-4 rounded-lg transition-colors
-                ${theme === "dark" ? "bg-hunter" : "bg-jet"}`}
+                ${
+                  theme === "dark"
+                    ? "bg-gold hover:bg-navy"
+                    : "bg-navy hover:bg-gold-light"
+                }`}
             >
               <div className="flex justify-between items-start mb-2">
                 <div>
@@ -91,13 +93,13 @@ const RoastHistory: React.FC = () => {
                     Roast
                   </span>
                   <span className="mx-2 text-gray-500">•</span>
-                  <span className="text-flame font-medium">
+                  <span className="text-gold font-medium">
                     {profileLabels[roast.profile]}
                   </span>
                   <span className="mx-2 text-gray-500">•</span>
                   <span
                     className={`text-sm ${
-                      theme === "dark" ? "text-cambridge" : "text-jet"
+                      theme === "dark" ? "text-gold" : "text-navy"
                     }`}
                   >
                     {new Date(roast.timestamp).toLocaleString()}
@@ -105,18 +107,18 @@ const RoastHistory: React.FC = () => {
                 </div>
                 <button
                   onClick={() => handleReuseCode(index)}
-                  className="text-sm text-flame hover:text-chestnut transition-colors"
+                  className="text-sm text-gold hover:text-[#e85c3a] transition-colors"
                 >
                   Re-use Code
                 </button>
               </div>
 
-              <div className="line-clamp-2 text-sm font-mono mb-2 overflow-hidden text-hunter">
+              <div className="line-clamp-2 text-sm font-mono mb-2 overflow-hidden text-gold">
                 {roast.code.trim().slice(0, 100)}
                 {roast.code.length > 100 && "..."}
               </div>
 
-              <p className="text-sm italic text-cambridge">
+              <p className="text-sm italic text-navy">
                 "{roast.response.slice(0, 60)}
                 {roast.response.length > 60 && "..."}"
               </p>

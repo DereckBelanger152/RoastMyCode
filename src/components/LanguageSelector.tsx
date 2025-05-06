@@ -27,8 +27,8 @@ const LanguageSelector: React.FC = () => {
   return (
     <div className="mb-6">
       <div className="flex items-center space-x-2 mb-2">
-        <Globe className="w-5 h-5 text-flame" />
-        <span className="font-medium text-lg text-hunter">
+        <Globe className="w-5 h-5 text-gold" />
+        <span className="font-medium text-lg text-navy">
           Choisis le language de programmation que tu as saboté:
         </span>
       </div>
@@ -44,8 +44,8 @@ const LanguageSelector: React.FC = () => {
             focus:outline-none focus:ring-2 focus:ring-flame
             ${
               isDark
-                ? "bg-jet text-cambridge border border-hunter hover:border-flame"
-                : "bg-cambridge text-jet border border-chestnut hover:border-flame"
+                ? "bg-navy text-gold border border-gold hover:border-navy"
+                : "bg-gold-light text-navy border border-navy hover:border-gold"
             }
           `}
         >
@@ -84,7 +84,7 @@ const LanguageSelector: React.FC = () => {
                       ? "bg-flame bg-opacity-20 text-flame"
                       : ""
                   }
-                  ${isDark ? "hover:bg-hunter" : "hover:bg-chestnut"}
+                  ${isDark ? "hover:bg-gold" : "hover:bg-navy"}
                 `}
               >
                 {lang.label}

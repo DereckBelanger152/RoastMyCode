@@ -71,7 +71,7 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
   if (mode === "dropdown") {
     return (
       <div className="mb-6">
-        <label className="block font-medium text-lg mb-2 text-hunter">
+        <label className="block font-medium text-lg mb-2 text-navy">
           Choisis un profil:
         </label>
 
@@ -86,8 +86,8 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
               focus:outline-none focus:ring-2 focus:ring-flame
               ${
                 isDark
-                  ? "bg-jet text-cambridge border border-hunter hover:border-flame"
-                  : "bg-cambridge text-jet border border-chestnut hover:border-flame"
+                  ? "bg-navy text-gold border border-gold hover:border-navy"
+                  : "bg-gold-light text-navy border border-navy hover:border-gold"
               }
             `}
           >
@@ -130,7 +130,7 @@ const ProfileSelector: React.FC<ProfileSelectorProps> = ({ mode }) => {
                         ? "bg-flame bg-opacity-20 text-flame"
                         : ""
                     }
-                    ${isDark ? "hover:bg-hunter" : "hover:bg-chestnut"}
+                    ${isDark ? "hover:bg-gold" : "hover:bg-navy"}
                   `}
                 >
                   <div className="flex items-center mb-1">

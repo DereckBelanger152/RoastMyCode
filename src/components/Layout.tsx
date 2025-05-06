@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div
       className={`min-h-screen flex flex-col transition-colors duration-300 
-      ${theme === "dark" ? "bg-jet text-cambridge" : "bg-cambridge text-jet"}`}
+      ${theme === "dark" ? "bg-navy text-gold" : "bg-gold-light text-navy"}`}
     >
       <Header />
       <div className="flex-grow flex">
@@ -31,8 +31,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             className={`fixed top-24 right-4 p-2 rounded-lg shadow-lg transition-all duration-300 z-30
               ${
                 theme === "dark"
-                  ? "bg-hunter hover:bg-flame text-cambridge"
-                  : "bg-chestnut hover:bg-flame text-jet"
+                  ? "bg-gold hover:bg-navy text-white"
+                  : "bg-navy hover:bg-gold text-white"
               }`}
             aria-label={isSidebarOpen ? "Close history" : "Open history"}
           >
@@ -49,8 +49,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             ${isSidebarOpen ? "translate-x-0" : "translate-x-full"}
             ${
               theme === "dark"
-                ? "bg-jet border-l border-hunter"
-                : "bg-cambridge border-l border-chestnut"
+                ? "bg-navy border-l border-gold"
+                : "bg-gold-light border-l border-navy"
             }`}
           >
             <Sidebar onClose={() => setIsSidebarOpen(false)} />

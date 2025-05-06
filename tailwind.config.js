@@ -23,6 +23,9 @@ export default {
         'flame': '#d36135',
         'jet': '#282b28',
         'cambridge': '#83bca9',
+        navy: "#001f3f",
+        gold: "#FFD700",
+        "gold-light": "#FFF8DC",
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
