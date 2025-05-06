@@ -28,8 +28,12 @@ const LanguageSelector: React.FC = () => {
     <div className="mb-6">
       <div className="flex items-center space-x-2 mb-2">
         <Globe className="w-5 h-5 text-gold" />
-        <span className="font-medium text-lg text-navy">
-          Choisis le language de programmation que tu as saboté:
+        <span
+          className={`font-medium text-lg whitespace-nowrap ${
+            isDark ? "text-gold" : "text-navy"
+          }`}
+        >
+          Choisis le language de programmation:
         </span>
       </div>
 
@@ -41,7 +45,7 @@ const LanguageSelector: React.FC = () => {
             w-full p-3 px-4 rounded-lg
             flex items-center justify-between
             transition-all duration-300
-            focus:outline-none focus:ring-2 focus:ring-flame
+            focus:outline-none focus:ring-2 focus:ring-gold
             ${
               isDark
                 ? "bg-navy text-gold border border-gold hover:border-navy"
@@ -49,11 +53,11 @@ const LanguageSelector: React.FC = () => {
             }
           `}
         >
-          <span>{selectedLanguage}</span>
+          <span className="truncate">{selectedLanguage}</span>
           <ChevronDown
             className={`w-5 h-5 transition-transform duration-300 ${
               isOpen ? "transform rotate-180" : ""
-            } ${isDark ? "text-cambridge" : "text-jet"}`}
+            } ${isDark ? "text-gold" : "text-navy"}`}
           />
         </button>
 
@@ -64,8 +68,8 @@ const LanguageSelector: React.FC = () => {
               max-h-60 overflow-auto
               ${
                 isDark
-                  ? "bg-jet border border-hunter"
-                  : "bg-cambridge border border-chestnut"
+                  ? "bg-navy border border-gold"
+                  : "bg-gold-light border border-navy"
               }
             `}
           >
@@ -81,10 +85,14 @@ const LanguageSelector: React.FC = () => {
                   transition-colors duration-150
                   ${
                     language === lang.value
-                      ? "bg-flame bg-opacity-20 text-flame"
+                      ? "bg-gold bg-opacity-20 text-gold"
                       : ""
                   }
-                  ${isDark ? "hover:bg-gold" : "hover:bg-navy"}
+                  ${
+                    isDark
+                      ? "hover:bg-gold hover:text-navy"
+                      : "hover:bg-navy hover:text-gold"
+                  }
                 `}
               >
                 {lang.label}

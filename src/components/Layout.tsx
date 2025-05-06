@@ -20,7 +20,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     >
       <Header />
       <div className="flex-grow flex">
-        <main className="flex-1 container mx-auto px-4 py-8 md:py-12 transition-all duration-300">
+        <main
+          className={`flex-1 container mx-auto px-4 py-8 md:py-12 transition-all duration-300 rounded-lg shadow-lg
+          ${
+            theme === "dark"
+              ? "bg-[#001a33]" // Slightly darker navy for dark mode
+              : "bg-[#fef6d8]" // Slightly darker gold-light for light mode
+          }`}
+        >
           {children}
         </main>
 

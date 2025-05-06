@@ -48,8 +48,12 @@ const RoastHistory: React.FC = () => {
     >
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold flex items-center text-gold">
-            <Clock className="mr-2 text-gold" size={20} />
+          <h3
+            className={`text-xl font-bold flex items-center ${
+              theme === "dark" ? "text-gold" : "text-navy"
+            }`}
+          >
+            <Clock className="mr-2" size={20} />
             History
           </h3>
           {roastHistory.length > 3 && (
@@ -58,8 +62,8 @@ const RoastHistory: React.FC = () => {
               className={`flex items-center space-x-1 p-2 rounded-lg transition-colors
                 ${
                   theme === "dark"
-                    ? "hover:bg-gold text-gold hover:text-navy"
-                    : "hover:bg-navy text-navy hover:text-gold"
+                    ? "hover:bg-[#003366] text-gold"
+                    : "hover:bg-[#f7e8b5] text-navy"
                 }`}
             >
               <span>{isExpanded ? "Show Less" : "Show All"}</span>
@@ -72,11 +76,11 @@ const RoastHistory: React.FC = () => {
           {displayedHistory.map((roast, index) => (
             <div
               key={roast.id}
-              className={`p-4 rounded-lg transition-colors
+              className={`p-4 rounded-lg transition-colors duration-300
                 ${
                   theme === "dark"
-                    ? "bg-gold hover:bg-navy"
-                    : "bg-navy hover:bg-gold-light"
+                    ? "bg-[#002244] hover:bg-[#001a33] text-gold"
+                    : "bg-[#fff4d6] hover:bg-[#fef2c0] text-navy"
                 }`}
             >
               <div className="flex justify-between items-start mb-2">
@@ -93,7 +97,11 @@ const RoastHistory: React.FC = () => {
                     Roast
                   </span>
                   <span className="mx-2 text-gray-500">•</span>
-                  <span className="text-gold font-medium">
+                  <span
+                    className={`${
+                      theme === "dark" ? "text-gold" : "text-navy"
+                    } font-medium`}
+                  >
                     {profileLabels[roast.profile]}
                   </span>
                   <span className="mx-2 text-gray-500">•</span>
@@ -107,18 +115,30 @@ const RoastHistory: React.FC = () => {
                 </div>
                 <button
                   onClick={() => handleReuseCode(index)}
-                  className="text-sm text-gold hover:text-[#e85c3a] transition-colors"
+                  className={`text-sm ${
+                    theme === "dark"
+                      ? "text-gold hover:text-[#e8b84a]"
+                      : "text-navy hover:text-[#b58900]"
+                  } transition-colors`}
                 >
                   Re-use Code
                 </button>
               </div>
 
-              <div className="line-clamp-2 text-sm font-mono mb-2 overflow-hidden text-gold">
+              <div
+                className={`line-clamp-2 text-sm font-mono mb-2 overflow-hidden ${
+                  theme === "dark" ? "text-gold" : "text-navy"
+                }`}
+              >
                 {roast.code.trim().slice(0, 100)}
                 {roast.code.length > 100 && "..."}
               </div>
 
-              <p className="text-sm italic text-navy">
+              <p
+                className={`text-sm italic ${
+                  theme === "dark" ? "text-gold" : "text-navy"
+                }`}
+              >
                 "{roast.response.slice(0, 60)}
                 {roast.response.length > 60 && "..."}"
               </p>

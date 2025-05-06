@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-2">
           <h1 className="text-2xl font-bold">
             <span className="text-gold">Roast</span>
-            <span className="text-navy">My</span>
+            <span className="text-gold">My</span>
             <span className="text-gold">Code</span>
           </h1>
         </div>
@@ -27,14 +27,18 @@ const Header: React.FC = () => {
           onClick={toggleTheme}
           className={`p-2 rounded-full transition-colors ${
             theme === "dark"
-              ? "bg-gold hover:bg-navy"
+              ? "bg-gold hover:bg-[#2e1065]"
               : "bg-navy hover:bg-gold-light"
           }`}
           aria-label={
             theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
           }
         >
-          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+          {theme === "dark" ? (
+            <Sun size={20} className="text-[#001a33]" />
+          ) : (
+            <Moon size={20} className="text-gold" />
+          )}
         </button>
       </div>
     </header>

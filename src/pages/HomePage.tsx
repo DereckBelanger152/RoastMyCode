@@ -16,7 +16,11 @@ const HomePage: React.FC = () => {
     <div className="space-y-8">
       <section className="text-center mb-8 animate-slide-up">
         <div className="inline-flex items-center justify-center mb-6">
-          <h2 className="text-4xl md:text-5xl font-bold ml-3 text-navy">
+          <h2
+            className={`text-4xl md:text-5xl font-bold ml-3 ${
+              theme === "dark" ? "text-gold" : "text-navy"
+            }`}
+          >
             Roast My Code
           </h2>
         </div>

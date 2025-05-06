@@ -7,25 +7,25 @@ const intensityOptions: {
   value: IntensityLevel;
   label: string;
   icon: React.ReactNode;
-  color: string;
+  gradient: string;
 }[] = [
   {
     value: "mild",
     label: "Constructif",
     icon: <Thermometer className="w-5 h-5" />,
-    color: "text-gold",
+    gradient: "from-[#e0f7fa] to-[#b2ebf2]", // Light blue gradient
   },
   {
     value: "medium",
     label: "Taquin",
     icon: <Flame className="w-5 h-5" />,
-    color: "text-navy",
+    gradient: "from-[#ffe082] to-[#ffca28]", // Yellow-orange gradient
   },
   {
     value: "savage",
     label: "Sans pitié",
     icon: <Zap className="w-5 h-5" />,
-    color: "text-[#e85c3a]",
+    gradient: "from-[#ff8a80] to-[#ff5252]", // Intense red gradient
   },
 ];
 
@@ -42,7 +42,13 @@ const IntensitySelector: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <label className="block font-medium text-navy">Intensité:</label>
+      <label
+        className={`block font-medium ${
+          theme === "dark" ? "text-gold" : "text-navy"
+        }`}
+      >
+        Intensité:
+      </label>
       <div className="grid grid-cols-3 gap-4">
         {intensityOptions.map((option) => (
           <button
@@ -52,21 +58,23 @@ const IntensitySelector: React.FC = () => {
             className={`group flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-300
               ${
                 intensity === option.value
-                  ? `ring-2 ring-offset-2 ring-${option.color.split("-")[1]}`
-                  : ""
+                  ? "ring-2 ring-offset-2 ring-gold"
+                  : "border border-gray-300"
               }
               ${
                 theme === "dark"
                   ? intensity === option.value
-                    ? "bg-navy"
-                    : "bg-gold hover:bg-navy"
+                    ? `bg-gradient-to-r ${option.gradient} text-gold`
+                    : `bg-gradient-to-r ${option.gradient} hover:opacity-90 text-gold`
                   : intensity === option.value
-                  ? "bg-gold-light"
-                  : "bg-navy hover:bg-gold-light"
+                  ? `bg-gradient-to-r ${option.gradient} text-navy`
+                  : `bg-gradient-to-r ${option.gradient} hover:opacity-90 text-navy`
               }`}
           >
             <span
-              className={`${option.color} transition-transform duration-300 group-hover:scale-110`}
+              className={`transition-transform duration-300 group-hover:scale-110 ${
+                theme === "dark" ? "text-gold" : "text-navy"
+              }`}
             >
               {option.icon}
             </span>
