@@ -3,7 +3,7 @@
 type RoastOptions = {
     code: string;
     language: string;
-    intensity: 'mild' | 'medium' | 'savage';
+    intensity: 'Constructif' | 'Taquin' | 'Brutal';
     profile: string;
   };
 
@@ -20,7 +20,7 @@ export async function fetchRoast({ code, language, intensity, profile }: RoastOp
   ${code}
   \`\`\`
   
-  Garde un ton ${intensity === 'savage' ? 'condescendant, sauvage et embarassant' : intensity === 'medium' ? 'moqueur, drôle, mais utile' : 'taquin et bienveillant'}.
+  Garde un ton ${intensity === 'Brutal' ? 'condescendant, sauvage et embarassant' : intensity === 'Taquin' ? 'moqueur, drôle, mais utile' : 'taquin et bienveillant'}.
   `;
   
     const response = await fetch("https://api.openai.com/v1/chat/completions", {

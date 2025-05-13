@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { fetchRoast } from "../utils/openai";
 
-export type IntensityLevel = "mild" | "medium" | "savage";
+export type IntensityLevel = "Constructif" | "Taquin" | "Brutal";
 export type AIProfile =
   | "meanTeacher"
   | "angrySenior"
@@ -42,7 +42,7 @@ export const RoastProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [currentCode, setCurrentCode] = useState("");
   const [language, setLanguage] = useState("javascript");
-  const [intensity, setIntensity] = useState<IntensityLevel>("medium");
+  const [intensity, setIntensity] = useState<IntensityLevel>("Taquin");
   const [profile, setProfile] = useState<AIProfile>("sarcasticMentor");
   const [currentRoast, setCurrentRoast] = useState<RoastResult | null>(null);
   const [roastHistory, setRoastHistory] = useState<RoastResult[]>(() => {

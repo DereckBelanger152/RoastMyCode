@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
                   <LanguageSelector />
                 </div>
                 <div className="flex-1">
-                  <ProfileDropdown mode="dropdown" />
+                  <ProfileDropdown />
                 </div>
               </div>
               <IntensitySelector />

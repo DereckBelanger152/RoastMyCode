@@ -16,17 +16,16 @@ interface RoastResultProps {
 }
 
 const intensityColors = {
-  mild: "text-gold",
-  medium: "text-navy",
-  spicy: "text-[#e85c3a]",
-  brutal: "text-[#ff4d4d]",
+  Constructif: "text-gold",
+  Taquin: "text-navy",
+  Brutal: "text-[#e85c3a]",
 };
 
 const profileLabels = {
-  meanTeacher: "Mean Teacher",
-  angrySenior: "Angry Senior Dev",
-  sarcasticMentor: "Sarcastic Mentor",
-  disappointedArchitect: "Disappointed Architect",
+  meanTeacher: "Professeur sévère",
+  angrySenior: "Développeur senior en colère",
+  sarcasticMentor: "Mentor sarcastique",
+  disappointedArchitect: "Architecte déçu",
 };
 
 const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
@@ -145,11 +144,11 @@ const RoastResult: React.FC<RoastResultProps> = ({ result, onBack }) => {
             border-l-4 animate-fade-in
             ${theme === "dark" ? "bg-[#001122]" : "bg-[#fff4d6]"}
             ${
-              result.intensity === "mild"
+              result.intensity === "Constructif"
                 ? "border-gold"
-                : result.intensity === "medium"
+                : result.intensity === "Taquin"
                 ? "border-navy"
-                : result.intensity === "savage"
+                : result.intensity === "Brutal"
                 ? "border-[#e85c3a]"
                 : "border-[#ff4d4d]"
             }`}

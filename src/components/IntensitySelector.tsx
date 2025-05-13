@@ -10,20 +10,20 @@ const intensityOptions: {
   gradient: string;
 }[] = [
   {
-    value: "mild",
+    value: "Constructif",
     label: "Constructif",
     icon: <Thermometer className="w-5 h-5" />,
     gradient: "from-[#e0f7fa] to-[#b2ebf2]", // Light blue gradient
   },
   {
-    value: "medium",
+    value: "Taquin",
     label: "Taquin",
     icon: <Flame className="w-5 h-5" />,
     gradient: "from-[#ffe082] to-[#ffca28]", // Yellow-orange gradient
   },
   {
-    value: "savage",
-    label: "Sans pitié",
+    value: "Brutal",
+    label: "Brutal",
     icon: <Zap className="w-5 h-5" />,
     gradient: "from-[#ff8a80] to-[#ff5252]", // Intense red gradient
   },

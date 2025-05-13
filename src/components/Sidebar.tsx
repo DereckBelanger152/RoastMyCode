@@ -8,10 +8,10 @@ interface SidebarProps {
 }
 
 const profileLabels = {
-  meanTeacher: "Mean Teacher",
-  angrySenior: "Angry Senior Dev",
-  sarcasticMentor: "Sarcastic Mentor",
-  disappointedArchitect: "Disappointed Architect",
+  meanTeacher: "Professeur sévère",
+  angrySenior: "Développeur senior en colère",
+  sarcasticMentor: "Mentor sarcastique",
+  disappointedArchitect: "Architecte déçu",
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
@@ -35,13 +35,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   };
 
   const intensityColors: Record<
-    "mild" | "medium" | "spicy" | "brutal",
+    "Constructif" | "Taquin" | "SansPitié",
     string
   > = {
-    mild: "text-gold", // Gold for mild intensity
-    medium: "text-navy", // Navy for medium intensity
-    spicy: "text-[#e85c3a]", // Slightly brighter chestnut for spicy
-    brutal: "text-[#ff4d4d]", // Bright red for brutal
+    Constructif: "text-gold", // Gold for mild intensity
+    Taquin: "text-navy", // Navy for medium intensity
+    SansPitié: "text-[#e85c3a]", // Slightly brighter chestnut for spicy
   };
 
   return (

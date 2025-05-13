@@ -44,12 +44,10 @@ const LanguageSelector: React.FC = () => {
           className={`
             w-full p-3 px-4 rounded-lg
             flex items-center justify-between
-            transition-all duration-300
-            focus:outline-none focus:ring-2 focus:ring-gold
             ${
               isDark
-                ? "bg-navy text-gold border border-gold hover:border-navy"
-                : "bg-gold-light text-navy border border-navy hover:border-gold"
+                ? "bg-navy text-gold border border-gold"
+                : "bg-gold-light text-navy border border-navy"
             }
           `}
         >
